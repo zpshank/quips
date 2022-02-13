@@ -7,8 +7,19 @@ export const assert = {
 		}
 	},
 	true: function(stmt) {
-		if (!stmt) {
-			throw "Expected true but was false";
+		if (typeof(stmt) !== 'boolean') {
+			throw "Expected boolean statement";
+		}
+		if (stmt === false) {
+			throw "Expected true";
+		}
+	},
+	false: function(stmt) {
+		if (typeof(stmt) !== 'boolean') {
+			throw "Expected boolean statement";
+		}
+		if(stmt === true) {
+			throw "Expected false";
 		}
 	},
 	throws: function(fn, thisArg) {
