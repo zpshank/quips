@@ -11,16 +11,21 @@ function parse_args(config, args) {
 		return;
 	}
 
-	// Last argument, must be input file
-	if (args.length == 1) {
-		config.input = args[0];
-		return;
-	}
-
 	// Parse argument and value
 	let arg = args[0]
 		.replace(/^-+/, '')
 		.split('=');
+
+	// Last argument, either input or help
+	if (args.length == 1) {
+		if (arg === 'h' || arg == 'help') {
+			config.help = true;
+		} else {
+			config.input = args[0];
+		}
+		return;
+	}
+
 	let option = arg[0];
 	let value = arg[1];
 

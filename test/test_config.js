@@ -54,4 +54,11 @@ tests.add(function test_unknown_option() {
 	}, this);
 });
 
+tests.add(function test_only_help() {
+	const args = ['script', '--help'];
+	const c = new Config(args);
+
+	assert.true(c.help);
+});
+
 std.exit(tests.run());
